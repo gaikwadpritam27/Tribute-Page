@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* --------------------------------------------------------------------------- */
+/* CSS Custom Properties */
+/* --------------------------------------------------------------------------- */
+
+:root {
+    --color-white: #ffffff;
+    --color-red: #de6262;
+ 
+    --max-width: calc(1200rem / 16);
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* CSS Reset */
+ /* --------------------------------------------------------------------------- */
+ 
+ /* Box sizing rules */
+ html {
+    box-sizing: border-box;
+ }
+  
+ *,
+ *::before,
+ *::after {
+    box-sizing: inherit;
+ }
+  
+ /* Remove default margin and padding */
+ * {
+    margin: 0;
+    padding: 0;
+ }
+  
+ /* Set core root defaults */
+ html {
+    scroll-behavior: smooth;
+ }
+  
+ /* Set core body defaults */
+ body {
+    min-height: 100vh;
+    line-height: 1.5;
+ }
+  
+ /* Make images easier to work with */
+ img,
+ picture,
+ figure,
+ svg {
+    display: block;
+    max-width: 100%;
+ }
+  
+ /* Remove list styles on ul, ol elements with a list role */
+ ul[role=list],
+ ol[role=list] {
+    list-style: none;
+ }
+  
+ /* Added to body. This makes transitions only after page load. Later removed using JS */
+ .preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+ }
+  
+ /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+ @media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+      scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+       animation-duration: 0.01ms !important;
+       animation-iteration-count: 1 !important;
+       transition-duration: 0.01ms !important;
+       scroll-behavior: auto !important;
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Ultility Classes */
+ /* --------------------------------------------------------------------------- */
+ 
+ .container {
+    width: min(var(--max-width), 100% - 3em);
+    margin-inline: auto;
+ }
+ 
+ .box {
+    padding: 0.5em;
+    border: 2px solid #ececec;
+    border-radius: 0.2em;
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* General Styles */
+ /* --------------------------------------------------------------------------- */
+ 
+ body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: calc(16rem / 16);
+    font-weight: 400;
+ }
+ 
+ .link {
+    color: var(--color-red);
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Typography */
+ /* --------------------------------------------------------------------------- */
+ 
+ .heading-1 {
+    font-size: 2rem;
+    margin-bottom: 0.25em;
+ }
+ 
+ .heading-2 {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 3em;
+ }
+ 
+ .heading-2::after {
+    content: '';
+    display: block;
+    width: calc(75rem / 16);
+    height: 0.25rem;
+    background-color: var(--color-red);
+    margin: 1rem auto;
+ }
+ 
+ @media (max-width: 60em) {
+    .heading-1 {
+       font-size: 1.8rem;
+    }
+ 
+    .heading-2 {
+       margin-bottom: 2em;
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Hero Section */
+ /* --------------------------------------------------------------------------- */
+ 
+ .hero {
+    min-height: 92.5vh;
+    background-image: linear-gradient(to bottom right, rgba(255, 102, 31, 0.6), rgba(4, 106, 57, 0.6)), 
+                      url(https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/dr-apj-abdul-kalam.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+ }
+ 
+ .hero__banner {
+    position: absolute;
+    top: 35%;
+    left: 0;
+    color: var(--color-white);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 3.5em 3em;
+ }
+ 
+ @media (max-width: 60em) {
+    .hero {
+       background-image: linear-gradient(to bottom right, rgba(255, 102, 31, 0.6), rgba(4, 106, 57, 0.6)), 
+                      url(https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/A._P._J._Abdul_Kalam.jpg);
+    }
+ 
+    .hero__banner {
+       top: unset;
+       bottom: 0;
+       width: 100%;
+       padding: 1.8em 0.5em;
+       text-align: center;
+    }
+ 
+    .hero__text {
+       font-size: calc(15rem / 16);
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Main Navigation */
+ /* --------------------------------------------------------------------------- */
+ 
+ .main-nav {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+ }
+ 
+ .main-nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-block: 0.75em;
+    list-style: none;
+ }
+ 
+ .main-nav__link:link,
+ .main-nav__link:visited {
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+ }
+ 
+ .main-nav__link:hover,
+ .main-nav__link:active {
+    color: var(--color-red);
+ }
+ 
+ @media (max-width: 60em) {
+    .main-nav {
+       display: none;
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Life Section */
+ /* --------------------------------------------------------------------------- */
+ 
+ .life {
+    margin-top: 6rem;
+ }
+ 
+ .life__wrapper {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: 3.5em;
+ }
+ 
+ .life__image {
+    object-fit: cover;
+ }
+ 
+ .life__image-caption {
+    text-align: center;
+    font-weight: 600;
+    padding-block: 0.5em;
+ }
+ 
+ .life__details {
+    padding-block: 0.5rem;
+ }
+ 
+ .life__paragraph:not(:last-child) {
+    margin-bottom: 1.5em;
+ }
+ 
+ @media (max-width: 46em) {
+    .life {
+       margin-top: 4em;
+    }
+ 
+    .life__wrapper {
+       grid-template-rows: repeat(2, auto);
+       grid-template-columns: 100%;
+       gap: 2em;
+    }
+ 
+    #image {
+       margin: 0 auto;
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Books Section */
+ /* --------------------------------------------------------------------------- */
+ 
+ .books {
+    margin-block: 8em;
+ }
+ 
+ .books__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2em;
+ }
+ 
+ .books__item {
+    overflow: hidden;
+ }
+ 
+ .books__image {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: all 0.7s;
+ }
+ 
+ .books__image:hover {
+    transform: scale(1.03);
+ }
+ 
+ @media (max-width: 60em) {
+    .books {
+       margin-block: 6em;
+    }
+ 
+    .books__list {
+       grid-template-rows: repeat(2, 1fr);
+       grid-template-columns: repeat(2, 1fr);
+    }
+ }
+ 
+ @media (max-width: 35em) {
+ 
+    .books {
+       margin-block: 4em;
+    }
+ 
+    .books__list {
+       grid-template-rows: repeat(4, 1fr);
+       grid-template-columns: 100%;
+    }
+ 
+    .books__image {
+       transition: unset;
+    }
+    
+    .books__image:hover {
+       transform: scale(1);
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Quotes Section */
+ /* --------------------------------------------------------------------------- */
+ 
+ .quotes {
+    margin-bottom: 6rem;
+ }
+ 
+ .quotes__item {
+    background-color: var(--color-white);
+    padding-block: 3.25em;
+    padding-inline: 4.5em 2em;
+    box-shadow: 0 0 5px #c9c9c9;
+    border-radius: 0.75em;
+    margin-block: 2.5em;
+    position: relative;
+ }
+ 
+ .quotes__item::before {
+    content: '\201F';
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    display: inline;
+    color: var(--color-red);
+    font-size: 3.5rem;
+    font-weight: 600;
+ }
+ 
+ @media (max-width: 30em) {
+    .quotes {
+       margin-bottom: 4rem;
+    }
+ 
+    .quotes__item {
+       padding-inline: 3em 2em;
+    }
+ 
+    .quotes__item::before {
+       left: 1rem;
+    }
+ }
+ 
+ /* --------------------------------------------------------------------------- */
+ /* Footer */
+ /* --------------------------------------------------------------------------- */
+ 
+ .footer {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: var(--color-white);
+    font-size: calc(14rem / 16);
+    text-align: center;
+    padding-block: 1.1em;
+ }
+ 
+ .footer__link:link,
+ .footer__link:visited {
+    color: var(--color-white);
+ }
+ 
+ .footer__link:hover,
+ .footer__link:active {
+    text-decoration: none;
+ }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+   <div class="hero">
+      <div class="hero__banner">
+         <h1 id="title" class="heading-1">Dr. APJ Abdul Kalam</h1>
+         <p>People&apos;s President & the Missile Man of India</p>
+      </div>
+   </div>
+
+   <!-- Main Navigation -->
+   <nav class="main-nav">
+      <div class="container">
+         <ul class="main-nav__list role="list">
+            <li class="main-nav__item" role="listitem">
+               <a class="main-nav__link" href="#home">Home</a>
+            </li>
+            <li class="main-nav__item" role="listitem">
+               <a class="main-nav__link" href="#life">Life</a>
+            </li>
+            <li class="main-nav__item" role="listitem">
+               <a class="main-nav__link" href="#books">Books</a>
+            </li>
+            <li class="main-nav__item" role="listitem">
+               <a class="main-nav__link" href="#quotes">Quotes</a>
+            </li>
+        </ul>
+      </div>
+   </nav>
+
+   <!-- Main -->
+   <main id="main">
+      <!-- Life Section -->
+      <div id="life" class="life">
+         <div class="container">
+            <h2 class="heading-2">Life of Dr. Kalam</h2>
+            <div class="life__wrapper">
+               <figure id="img-div" class="life__image-block">
+                  <img id="image" class="life__image | box" src="https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/kalam-sir.jpg" alt="Dr. A. P. J. Abdul Kalam">
+                  <figcaption id="img-caption" class="life__image-caption">Dr. APJ Abdul Kalam</figcaption>
+               </figure>
+               <div id="tribute-info" class="life__details">
+                  <p class="life__paragraph">
+                     Avul Pakir Jainulabdeen Abdul Kalam (15October 1931 &dash; 27 July 2015) 
+                     was an Indian aerospace scientist, who served as the 11th President of India 
+                     from 2002 to 2007.
+                  </p>
+                  <p class="life__paragraph">
+                     He was born and raised in Rameswaram, Tamil Nadu (India) 
+                     and studied physics and aerospace engineering.
+                  </p>
+                  <p class="life__paragraph">
+                     He spent the next four decades as a scientist and science administrator, 
+                     mainly at the Defence Research and Development Organisation (DRDO) and 
+                     Indian Space Research Organisation (ISRO) and was intimately involved in 
+                     India's civilian space programme and military missile development efforts. 
+                  </p>
+                  <p class="life__paragraph">
+                     He thus came to be known as the Missile Man of India for his work 
+                     on the development of ballistic missile and launch vehicle technology.
+                  </p>
+                  <p class="life__paragraph">
+                     Widely referred to as the People's President, he returned to his civilian life 
+                     of education, writing and public service after a single term. 
+                  </p>
+                  <p class="life__paragraph">
+                     He was a recipient of several prestigious awards, including the Bharat Ratna, 
+                     the highest civilian award of India. Read more about Dr. A.P.J. Abdul Kalam on 
+                     <a id="tribute-link" class="link" href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam" target="_blank">Wikipedia</a>.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Books -->
+      <div id="books" class="books">
+         <div class="container">
+            <h2 class="heading-2">Books Written by Dr. Kalam</h2>
+            <ul class="books__list" role="list">
+               <li class="books__item | box" role="listitem">
+                  <a href="https://www.amazon.in/Ignited-Minds-Unleashing-power-within/dp/0143424122" target="_blank">
+                     <img class="books__image" src="https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/book1.jpg" alt="Ignited Minds - Unleashing the power within India ">
+                  </a>
+               </li>
+               <li class="books__item | box" role="listitem">
+                  <a href="https://www.amazon.in/Beyond-2020-P-J-Abdul-Kalam/dp/0143426060/" target="_blank">
+                     <img class="books__image" src="https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/book2.jpeg" alt="Beyond 2020: A Vision For Tomorrow’s India">
+                  </a>
+               </li>
+               <li class="books__item | box" role="listitem">
+                  <a href="https://www.amazon.in/Born-Blossom-P-J-Abdul-Kalam/dp/8184303505/" target="_blank">
+                     <img class="books__image" src="https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/book3.jpg" alt="You Are Born to Blossom">
+                  </a>
+               </li>
+               <li class="books__item | box" role="listitem">
+                  <a href="https://penguin.co.in/book/failure-is-a-teacher/" target="_blank">
+                     <img class="books__image" src="https://sandipan-ajp-abdul-kalam-tribute.netlify.app/images/book4.jpg" alt="Failure is a teacher">
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+      <!-- Quotes -->
+      <div id="quotes" class="quotes">
+         <h2 class="heading-2">Inspiring Quotes</h2>
+         <div class="container">
+            <blockquote class="quotes__item">
+               Don&apos;t take rest after your first victory because if you fail in second, more lips are waiting to say that your first victory was just luck.
+            </blockquote> 
+            <blockquote class="quotes__item">
+               If you fail, never give up because FAIL means First Attempt In Learning.
+            </blockquote>
+            <blockquote class="quotes__item">
+               Be active! Take on responsibility! Work for the things you believe in. If you do not, you are surrendering your fate to others.
+            </blockquote>
+         </div>
+      </div>
+   </main>
+
+   <!-- Footer -->
+   <footer class="footer">
+      <div class="container">
+         <p>Coded with love by <a class="footer__link" href="https://twitter.com/SandipanIO">Sandipan Mukherjee</a></p>
+      </div>
+  </footer>
+</body>
+</html>
+   
+
+   
